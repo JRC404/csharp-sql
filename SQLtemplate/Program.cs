@@ -19,10 +19,10 @@ namespace SQLtemplate
                 // “DataSource=localhost,1401;UserID=sa;Password=YourStrong!Passw0rd;Initial Catalog=Codenation;”
 
                 // what would you like to send to SQL?
-                string SELECT = "SELECT * FROM Students"; // select everything from the table 'students' from 'CodeNation'
+                //string SELECT = "SELECT * FROM Students"; // select everything from the table 'students' from 'CodeNation'
                 string INSERT; // warning will be present
                 string UPDATE; // warning will be present
-                string DELETE; // warning will be present
+                string DELETE = "DELETE FROM Students WHERE ID=17"; // warning will be present
 
                 // Writing to the console BEFORE the connection is attempted... 
                 Console.WriteLine("Connecting to SQL server, let's see if it works. Fingers crossed, Harry.");
@@ -31,7 +31,7 @@ namespace SQLtemplate
                 SqlConnection connection = new SqlConnection(builder.ConnectionString);
                 using (connection) // may be modifying this...
                 {
-                    SqlCommand cmd = new SqlCommand(SELECT, connection);
+                    SqlCommand cmd = new SqlCommand(DELETE, connection);
                     connection.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
